@@ -1,0 +1,11 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+     - /tomcat/logs/log.log
+#    - D:/projectlogs/test3.log
+
+
+output.logstash:
+   hosts: ["localhost:5044"]
+

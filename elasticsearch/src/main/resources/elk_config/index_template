@@ -1,0 +1,39 @@
+PUT _template/gw_template
+{
+	"index_patterns":["apigateway*"],
+	"settings":{
+		"number_of_shards":5,
+		"number_of_replicas":3
+	},
+	"mappings":{
+		"logs":{
+			"properties":{
+				"method":{
+					"type":"keyword"
+				},
+				"eventTime":{
+					"type":"date"
+				},
+				"requestUrl":{
+					"type":"keyword",
+					"ignore_above": 1024
+				},
+				"serviceId":{
+					"type":"keyword"
+				},
+				"userId":{
+					"type":"keyword"
+				},
+				"serviceIp":{
+					"type":"keyword"
+				},
+				"responseTime":{
+					"type":"long"
+				},
+				"responseCode":{
+					"type":"integer"
+				}
+			}
+		}
+	}
+}

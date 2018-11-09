@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="30 seconds" debug="false">
+
+    <property name="logback.base.dir" value="/tomcat/logs" />
+    <property name="max.history" value="30" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%date{ISO8601}] [PID:${PID:-}] [TID:%X{Transaction-ID}] [%thread] %-5level: %logger.%M\(%line\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.base.dir}/elasticbatch.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logback.base.dir}/archive/elasticbatch.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${max.history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%date{ISO8601}] [PID:${PID:-}] [TID:%X{Transaction-ID}] [%thread] %-5level: %logger{36}\(%M:%line\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="FAILE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.base.dir}/elasticbatch_fail.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logback.base.dir}/archive/elasticbatch_fail.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${max.history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <logger name="com.kt.gepp.realtime_refine.service.ResultFileSave" level="ERROR" additivity="false">
+        <appender-ref ref="FAILE_FILE" />
+    </logger>
+    
+
+    <logger name="com.kt.gepp" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- 3rdparty Loggers -->
+    <logger name="org.apache.curator" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.apache.ibatis.io" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.apache.http" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.apache.zookeeper" level="WARN" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.mybatis.spring" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.springframework.transaction" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+
+   <!-- HikariCP DB Pool Stats -->
+    <logger name="com.zaxxer.hikari.pool.HikariPool.logPoolState" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    
+     <!-- kafka -->
+    <logger name="org.apache.kafka" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- SQL Log. -->
+    <logger name="jdbc.audit" level="OFF" additivity="false" />
+    <logger name="jdbc.connection" level="OFF" additivity="false" />
+    <logger name="jdbc.resultset" level="OFF" additivity="false" />
+    <logger name="jdbc.sqltiming" level="OFF" additivity="false" />
+	<logger name="jdbc.resultsettable" level="OFF" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="jdbc.sqlonly" level="OFF" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    
+    <root level="INFO" >
+    	<appender-ref ref="FILE" />
+    </root>
+</configuration>
