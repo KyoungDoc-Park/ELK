@@ -8,6 +8,7 @@ public class ElasticsearchApplication {
 
 	public static void main(String[] args) {
 		// add juseokdd
+		//temp1 branch
 		SpringApplication.run(ElasticsearchApplication.class, args);
 	}
 }
