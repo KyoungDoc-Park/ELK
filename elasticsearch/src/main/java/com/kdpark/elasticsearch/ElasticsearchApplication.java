@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ElasticsearchApplication {
 
 	public static void main(String[] args) {
+		// add juseok
 		SpringApplication.run(ElasticsearchApplication.class, args);
 	}
 }
