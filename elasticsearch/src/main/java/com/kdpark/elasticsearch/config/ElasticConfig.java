@@ -22,7 +22,7 @@ public class ElasticConfig {
 	 private int port;
 	 
 	 private final String elasticScheme = "http";
-	
+	//asdss
 	 @Bean
      public RestHighLevelClient getRestClient() {
 	
