@@ -79,7 +79,7 @@ log.error("ee");
 		log.info("enddt  : "+endDateTime.toString(fmt));
 		log.info("startdt: "+startDateTime.toString(fmt));
 		log.info("enddt  : "+endDateTime.toString(fmt));
-		//범위 쿼리  설정
+		//범위 쿼리  설정ddddd
 		searchSourceBuilder.query(QueryBuilders.boolQuery()
 				.must(QueryBuilders.rangeQuery("eventTime").gt(startDateTime.toString(fmt)).lt(endDateTime.toString(fmt))));
 		
