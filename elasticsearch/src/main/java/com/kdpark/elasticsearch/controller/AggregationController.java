@@ -115,7 +115,18 @@ public class AggregationController {
 		log.info("docCountError : "+byServiceAggregation.getDocCountError(), " getSumOfOtherDocCounts : "+	byServiceAggregation.getSumOfOtherDocCounts());
 				
 		List<? extends Bucket> elasticBucket = byServiceAggregation.getBuckets();
-			 
+
+
+		//add properties
+		//add properties
+		//add properties
+		//add properties//add properties
+		//add properties
+		//add properties//add properties
+
+
+
+
 		//get specific data
 		for(Bucket serviceBucket : elasticBucket) {
 			log.info("key : "+serviceBucket.getKeyAsString());
