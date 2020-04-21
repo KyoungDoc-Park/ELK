@@ -70,6 +70,7 @@ public class AggregationController {
 		log.info("enddt  : "+endDateTime.toString(fmt));log.info("startdt: "+startDateTime.toString(fmt));
 		log.info("enddt  : "+endDateTime.toString(fmt));
 
+log.error("ee");
 		log.info("startdt: "+startDateTime.toString(fmt));
 		log.info("enddt  : "+endDateTime.toString(fmt));
 		log.info("startdt: "+startDateTime.toString(fmt));
