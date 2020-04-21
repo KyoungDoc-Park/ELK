@@ -62,10 +62,23 @@ public class AggregationController {
 			
 		//temp end 
 		DateTime startDateTime = endDateTime.minusMinutes(10).minusSeconds(1).withZone(DateTimeZone.forID("UTC"));  //검색시작시간  (시작시간의 10분전)
-			
+
+		log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));
+
+log.error("ee");
 		log.info("startdt: "+startDateTime.toString(fmt));
 		log.info("enddt  : "+endDateTime.toString(fmt));
-		
+		log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));
+		log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));
+		log.info("startdt: "+startDateTime.toString(fmt));
+		log.info("enddt  : "+endDateTime.toString(fmt));
 		//범위 쿼리  설정
 		searchSourceBuilder.query(QueryBuilders.boolQuery()
 				.must(QueryBuilders.rangeQuery("eventTime").gt(startDateTime.toString(fmt)).lt(endDateTime.toString(fmt))));
@@ -103,7 +116,18 @@ public class AggregationController {
 		log.info("docCountError : "+byServiceAggregation.getDocCountError(), " getSumOfOtherDocCounts : "+	byServiceAggregation.getSumOfOtherDocCounts());
 				
 		List<? extends Bucket> elasticBucket = byServiceAggregation.getBuckets();
-			 
+
+
+		//add properties
+		//add properties
+		//add properties
+		//add properties//add properties
+		//add properties
+		//add properties//add properties
+
+
+
+
 		//get specific data
 		for(Bucket serviceBucket : elasticBucket) {
 			log.info("key : "+serviceBucket.getKeyAsString());
